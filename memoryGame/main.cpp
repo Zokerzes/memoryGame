@@ -11,8 +11,16 @@ bool exitG = false;
 vector<int> startArr()
 {
 
-    cout << "  Enter the size of the X and Y field\nAttention: the field must have an even size!\n";
-    cin >> sX >> sY;
+    /*cout << "  Enter the size of the X and Y field\nAttention: the field must have an even size!\n";
+    cin >> sX >> sY;*/
+
+    int P;
+    do
+    {
+        cout << "  Enter the size of the X and Y field\nAttention: the field must have an even size!\n";
+        cin >> sX >> sY;
+        P = (sX * sY) % 2;
+    } while (P);
 
     size_t arSize = sX * sY;
 
