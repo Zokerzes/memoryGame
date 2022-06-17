@@ -178,12 +178,34 @@ void game()
     {
         char ex = ' ';
         int x, y, x1, y1;
-
-        cout << "Enter coord first card (X Y)" << endl;
-        cin >> x >> y;
+        int P;
+        do
+        {
+            cout << "Enter coord first card (X Y)" << endl;
+            cin >> x >> y;
+            if ((x < 1 || x > sX) || (y < 1 || y > sY))
+            {
+                P = 1;
+            }
+            else P = 0;
+        } while (P);
+        //cout << "Enter coord first card (X Y)" << endl;
+        //cin >> x >> y;
         displayElementOnCloseField(v, vC, x, y);
-        cout << "Enter coord second card (X1 Y1)" << endl;
-        cin >> x1 >> y1;
+        
+        do
+        {
+            cout << "Enter coord second card (X1 Y1)" << endl;
+            cin >> x1 >> y1;
+            if ((x1 < 1 || x1 > sX) || (y1 < 1 || y1 > sY))
+            {
+                P = 1;
+            }
+            else P = 0;
+        } while (P);
+
+        //cout << "Enter coord second card (X1 Y1)" << endl;
+        //cin >> x1 >> y1;
         displayElementOnCloseField(v, vC, x, y, x1, y1);
         displayField(vC);
         count++;
