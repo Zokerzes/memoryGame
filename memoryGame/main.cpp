@@ -30,24 +30,19 @@ vector<int> startArr()
 
     return v;
 };
-
 void menu()
 {
 
-    char mChoise, exit/*, del*/;
+    char mChoise, exit;
     do
     {
         do
         {
             system("cls");
             cout << "*********** MEMORY GAME ***********" << endl << endl;
-            cout << "(1) START GAME" << endl
-                /* << "(2) " << endl << "(3) " << endl << "(4) " << endl << "(5) " << endl << "(6) " << endl << "(7) " << endl*/
-                << "(0) EXIT" << endl << endl;
+            cout << "(1) START GAME" << endl << "(0) EXIT" << endl << endl;
             mChoise = _getch();
         } while (mChoise != '1' && mChoise != '0');
-
-
 
         switch (mChoise)
         {
@@ -59,13 +54,11 @@ void menu()
 
             break;
         }
-
         cout << endl << "Do you want go to menu or exit? (1 - yes, 0 - no)" << endl;
         fflush(stdin);
         exit = _getch();
     } while (exit != '0');
 }
-
 void displayField(vector<int>v)
 {
     system("cls");
@@ -163,7 +156,6 @@ bool displayElementOnCloseField(vector<int>& v, vector<int>& vC, int x, int y, i
     }
     return exitG;
 }
-
 void game()
 {
     exitG = false;
@@ -187,7 +179,7 @@ void game()
         displayElementOnCloseField(v, vC, x, y, x1, y1);
         displayField(vC);
         count++;
-        cout << endl << endl << "to exit pres 0\n";
+        cout << endl << endl << "to continue enter 1 to exit enter 0\n";
         cin >> ex;
         cout << endl;
         if (ex == '0') exitG = true;
@@ -195,7 +187,6 @@ void game()
 
     cout << "Game over in " << count << " steps";
 };
-
 int main()
 {
 
