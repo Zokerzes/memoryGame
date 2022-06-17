@@ -124,6 +124,10 @@ bool displayElementOnCloseField(vector<int>& v, vector<int>& vC, int x, int y, i
     system("cls");
     cout << "*********** MEMORY GAME ***********" << endl << endl;
     cout << "Field size: " << sX << "X" << sY << endl << endl;
+    
+   
+
+
     if (x == x1 && y == y1) { cout << "ATTENTION: you choose 1 card\n"; }
     else if (v[(x - 1) + (sX) * (y - 1)] == v[(x1 - 1) + (sX) * (y1 - 1)]) 
     {
