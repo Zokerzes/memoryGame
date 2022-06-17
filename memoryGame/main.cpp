@@ -215,13 +215,9 @@ void game()
 };
 int main()
 {
-
     int count = 0;
     vector<int> v;
     vector<int> vC;
-
     menu();
-
-
     return 0;
 }
