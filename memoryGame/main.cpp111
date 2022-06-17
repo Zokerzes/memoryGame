@@ -10,12 +10,15 @@ int sY = 0;
 bool exitG = false;
 vector<int> startArr()
 {
-
-    cout << "  Enter the size of the X and Y field\nAttention: the field must have an even size!\n";
-    cin >> sX >> sY;
-
-    size_t arSize = sX * sY;
-
+    int P;
+    do
+    {
+        cout << "  Enter the size of the X and Y field\nAttention: the field must have an even size!\n";
+        cin >> sX >> sY;
+        P = (sX * sY) % 2;
+    } while (P);
+        size_t arSize = sX * sY;
+   
     vector<int>v;
 
     for (int i = 0; i < arSize / 2; i++)
@@ -30,7 +33,18 @@ vector<int> startArr()
 
     return v;
 };
+vector<int> closeField()
+{
+    size_t arSize = sX * sY;
 
+    vector<int>vC;
+
+    for (int i = 0; i < arSize; i++)
+    {
+        vC.push_back(254);
+    }
+    return vC;
+}
 void menu()
 {
 
@@ -81,18 +95,7 @@ void displayField(vector<int>v)
     }
 
 }
-vector<int> closeField()
-{
-    size_t arSize = sX * sY;
 
-    vector<int>vC;
-
-    for (int i = 0; i < arSize; i++)
-    {
-        vC.push_back(254);
-    }
-    return vC;
-}
 bool displayElementOnCloseField(vector<int>& v, vector<int>& vC, int x, int y)
 {
     system("cls");
@@ -123,12 +126,7 @@ bool displayElementOnCloseField(vector<int>& v, vector<int>& vC, int x, int y, i
     system("cls");
     cout << "*********** MEMORY GAME ***********" << endl << endl;
     cout << "Field size: " << sX << "X" << sY << endl << endl;
-    
-   
-
-
-    if (x == x1 && y == y1) { cout << "ATTENTION: you choose 1 card\n"; }
-    else if (v[(x - 1) + (sX) * (y - 1)] == v[(x1 - 1) + (sX) * (y1 - 1)]) 
+    if ((v[(x - 1) + (sX) * (y - 1)] == v[(x1 - 1) + (sX) * (y1 - 1)]) && (x != x1 && y != y1))
     {
         vC[(x - 1) + (sX) * (y - 1)] = v[(x - 1) + (sX) * (y - 1)];
         vC[(x1 - 1) + (sX) * (y1 - 1)] = v[(x1 - 1) + (sX) * (y1 - 1)];
@@ -142,6 +140,7 @@ bool displayElementOnCloseField(vector<int>& v, vector<int>& vC, int x, int y, i
             cout << endl;
         }
     }
+    else if (x == x1 && y == y1) { cout << "ATTENTION: you choose 1 card\n"; }
     else
     {
         for (int j = 0; j < sY; j++)
@@ -178,16 +177,36 @@ void game()
     {
         char ex = ' ';
         int x, y, x1, y1;
-
-        cout << "Enter coord first card (X Y)" << endl;
-        cin >> x >> y;
+        int P;
+        do
+        {
+            cout << "Enter coord first card (X Y)" << endl;
+            cin >> x >> y;
+            if ((x < 1 || x > sX) || (y < 1 || y > sY))
+            {
+                P = 1;
+            }
+            else P = 0;
+        } while (P);
+        
         displayElementOnCloseField(v, vC, x, y);
-        cout << "Enter coord second card (X1 Y1)" << endl;
-        cin >> x1 >> y1;
+        
+        do
+        {
+            cout << "Enter coord second card (X1 Y1)" << endl;
+            cin >> x1 >> y1;
+            if ((x1 < 1 || x1 > sX) || (y1 < 1 || y1 > sY))
+            {
+                P = 1;
+            }
+            else P = 0;
+        } while (P);
+        
+        
         displayElementOnCloseField(v, vC, x, y, x1, y1);
         displayField(vC);
         count++;
-        cout << endl << endl << "to exit pres 0\n";
+        cout << endl << endl << "to exit pres 0 or 1 to continue\n";
         cin >> ex;
         cout << endl;
         if (ex == '0') exitG = true;
